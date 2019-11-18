@@ -4,4 +4,6 @@
     <string name="bord_1">Bord 1</string>
     <string name="bord_3">Bord 3</string>
     <string name="bord_2">Bord_2</string>
+    <string name="foodready">foodready</string>
+    <string name="image">image</string>
 </resources>
