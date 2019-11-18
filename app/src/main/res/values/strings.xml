@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AntonsSkafferiAppliaktion</string>
     <string name="hello_group_2">Hello Group 2!</string>
+    <string name="bord_1">Bord 1</string>
+    <string name="bord_3">Bord 3</string>
+    <string name="bord_2">Bord_2</string>
 </resources>
