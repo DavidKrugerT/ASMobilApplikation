@@ -12,4 +12,12 @@
     <string name="f_rr_tt">Förrätt</string>
     <string name="Varmrätt">Varmrätt</string>
     <string name="pizza">Pizza</string>
+    <string name="lasagn">LASAGN</string>
+    <string name="lax_med_potatis">Lax med Potatis</string>
+    <string name="plankstek">Plankstek</string>
+    <string name="hamburgare">Hamburgare</string>
+    <string name="sallad">Sallad</string>
+    <string name="dryck">Dryck</string>
+    <string name="Förrätt" />
+    <string name="Efterrätt" />
 </resources>
