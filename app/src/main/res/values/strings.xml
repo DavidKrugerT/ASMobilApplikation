@@ -6,4 +6,10 @@
     <string name="bord_2">Bord_2</string>
     <string name="foodready">foodready</string>
     <string name="image">image</string>
+    <string name="table_1">Table 1</string>
+    <string name="X">X</string>
+    <string name="lasagnaaaa">LASAGNAAAA</string>
+    <string name="f_rr_tt">Förrätt</string>
+    <string name="Varmrätt">Varmrätt</string>
+    <string name="pizza">Pizza</string>
 </resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="1000dp"
+    android:layout_height="800dp"
+    android:background="@color/colorPrimaryDark"
+    android:padding="50dp"
+    android:layout_gravity="center">
+
+
+    <TextView
+        android:id="@+id/close_popup"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:background="@drawable/circlebackground"
+        android:gravity="center"
+        android:text="@string/X"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/Varmrätt"
+            android:textColor="@color/white"
+            android:textSize="36sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="579dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="547dp"
+            android:layout_height="37dp"
+            android:text="@string/lasagnaaaa"
+            android:textColor="@color/white"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="547dp"
+            android:layout_height="37dp"
+            android:text="@string/pizza"
+            android:textColor="@color/white"
+            android:gravity="center"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
