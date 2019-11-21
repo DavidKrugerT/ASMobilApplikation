@@ -2,130 +2,152 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_height="match_parent"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/colorPrimaryDark">
 
-
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="592dp"
-        android:layout_height="341dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
-
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Arbetsschema"
+        android:text="Välj Arbetstid"
         android:textColor="@color/white"
-        android:textSize="50dp"
+        android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021" />
+        app:layout_constraintVertical_bias="0.018" />
 
     <LinearLayout
-        android:layout_width="341dp"
-        android:layout_height="348dp"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:padding="30dp"
+        android:id="@+id/linearLayout4"
+        android:layout_width="1229dp"
+        android:layout_height="462dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.173">
+        app:layout_constraintVertical_bias="0.195">
 
-        <TextView
-            android:id="@+id/myDate"
-            android:layout_width="262dp"
-            android:layout_height="69dp"
-            android:text="Välj datum"
-            android:textSize="35dp" />
 
-        <EditText
-            android:id="@+id/nameInput"
-            android:layout_width="267dp"
-            android:layout_height="56dp"
-            android:ems="10"
-            android:hint="Namn"
-            android:inputType="textPersonName"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="35dp" />
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="450dp"
+            android:layout_weight="0.40"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.023"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.17"
 
-        <EditText
-            android:id="@+id/tidInput"
-            android:layout_width="268dp"
-            android:layout_height="68dp"
-            android:ems="10"
-            android:hint="Lunch eller kväll"
-            android:inputType="textPersonName"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="35dp" />
+            />
 
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="269dp"
-            android:layout_height="57dp"
-            android:text="Spara" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="450dp"
+            android:layout_weight="0.26"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.65"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.173">
+
+            <TextView
+                android:id="@+id/myDate"
+                android:layout_width="262dp"
+                android:layout_height="69dp"
+                android:text="Välj datum"
+                android:textSize="35dp" />
+
+            <EditText
+                android:id="@+id/nameInput"
+                android:layout_width="267dp"
+                android:layout_height="56dp"
+                android:ems="10"
+                android:hint="Namn"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="35dp" />
+
+            <EditText
+                android:id="@+id/tidInput"
+                android:layout_width="268dp"
+                android:layout_height="68dp"
+                android:ems="10"
+                android:hint="Lunch eller kväll"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="35dp" />
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="269dp"
+                android:layout_height="57dp"
+                android:text="Spara" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="450dp"
+            android:layout_weight="0.33"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.995"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.169">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Din arbetstid"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="35dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sparadDatum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/sparadNamn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/sparadTid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30dp" />
+
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="318dp"
-        android:layout_height="343dp"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:padding="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.995"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Din arbetstid"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="35dp" />
-
-        <TextView
-            android:id="@+id/sparadDatum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
-            android:text=""
-            android:textSize="30dp" />
-
-        <TextView
-            android:id="@+id/sparadNamn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="30dp" />
-
-        <TextView
-            android:id="@+id/sparadTid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="30dp" />
-
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
