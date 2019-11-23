@@ -6,7 +6,12 @@
     <string name="bord_2">Bord_2</string>
     <string name="foodready">foodready</string>
     <string name="image">image</string>
-    <string name="table_1">Table 1</string>
+    <string name="table_1">Bord 1</string>
+    <string name="table_2">Bord 2</string>
+    <string name="table_3">Bord 3</string>
+    <string name="table_4">Bord 4</string>
+    <string name="table_5">Bord 5</string>
+    <string name="table_6">Bord 6</string>
     <string name="X">X</string>
     <string name="lasagnaaaa">LASAGNAAAA</string>
     <string name="f_rr_tt">Förrätt</string>

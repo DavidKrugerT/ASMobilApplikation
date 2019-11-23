@@ -10,18 +10,18 @@
     tools:context=".MainActivity">
 
     <Button
-        android:onClick="ShowPopup"
-        android:id="@+id/popUp_btn"
+        android:id="@+id/popUp_btn1"
         android:layout_width="160dp"
         android:layout_height="73dp"
         android:layout_marginBottom="496dp"
+        android:onClick="ShowPopup"
         android:text="@string/table_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221" />
+        app:layout_constraintVertical_bias="0.22" />
 
     <Button
         android:id="@+id/button2schedule"
@@ -33,6 +33,69 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.86" />
+
+    <Button
+        android:id="@+id/popUp_btn2"
+        android:layout_width="160dp"
+        android:layout_height="73dp"
+        android:onClick="ShowPopup"
+        android:text="@string/table_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popUp_btn1"
+        app:layout_constraintVertical_bias="0.301" />
+
+    <Button
+        android:id="@+id/popUp_btn3"
+        android:layout_width="160dp"
+        android:layout_height="73dp"
+        android:onClick="ShowPopup"
+        android:text="@string/table_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.078" />
+
+    <Button
+        android:id="@+id/popUp_btn4"
+        android:layout_width="160dp"
+        android:layout_height="73dp"
+        android:onClick="ShowPopup"
+        android:text="@string/table_4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.368"
+        app:layout_constraintStart_toEndOf="@+id/popUp_btn2"
+        app:layout_constraintTop_toBottomOf="@+id/popUp_btn3"
+        app:layout_constraintVertical_bias="0.29" />
+
+    <Button
+        android:id="@+id/popUp_btn5"
+        android:layout_width="160dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="56dp"
+        android:onClick="ShowPopup"
+        android:text="@string/table_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintStart_toEndOf="@+id/popUp_btn3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/popUp_btn6"
+        android:layout_width="160dp"
+        android:layout_height="73dp"
+        android:layout_marginBottom="432dp"
+        android:onClick="ShowPopup"
+        android:text="@string/table_6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.779"
+        app:layout_constraintStart_toEndOf="@+id/popUp_btn4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
