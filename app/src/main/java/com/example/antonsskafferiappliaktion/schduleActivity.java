@@ -17,6 +17,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +28,8 @@ public class schduleActivity extends AppCompatActivity implements OnItemSelected
 
     CalendarView calendarView;
     TextView myDate;
+
+    String name;
 
     TextView sparadNamn;
     TextView sparadTid;
@@ -104,15 +110,56 @@ public class schduleActivity extends AppCompatActivity implements OnItemSelected
 
     }
 
-    /*private class GetPerson extends AsyncTask<Void, Void, Void> {
+    private class GetPerson extends AsyncTask<Void, Void, Void> {
+        Person person;
         private String apiUrl = "";
         private String strXml;
 
         @Override
         protected Void doInBackground(Void... voids) {
+            getData(apiUrl);
             return null;
         }
-    }*/
+
+        private void getData(String strUrl) {
+            try {
+                URL url = new URL(strUrl);
+                HttpURLConnection conn;
+                do {
+                    conn = (HttpURLConnection) url.openConnection();
+                } while (conn.getResponseCode() != 200);
+                conn.setRequestMethod("GET");
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+                    strXml = stringBuilder.toString();
+                    setData();
+                    return;
+                } finally {
+                    conn.disconnect();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+
+        private void setData() {
+            try {
+                person.setEmployement(true);
+                person.setName("Jonte");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -124,3 +171,4 @@ public class schduleActivity extends AppCompatActivity implements OnItemSelected
 
     }
 }
+
