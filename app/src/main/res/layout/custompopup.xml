@@ -94,7 +94,7 @@
                 android:layout_weight="1"
                 android:text="@string/lasagn"
                 android:textStyle="bold"
-                />
+                android:id="@+id/test" />
 
             <Button
                 android:layout_width="0dp"
@@ -135,7 +135,8 @@
             <ListView
                 android:id="@+id/food_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/white"/>
         </LinearLayout>
     </LinearLayout>
 
