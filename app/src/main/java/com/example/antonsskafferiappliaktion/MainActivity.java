@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
         food_list = (ListView) takeOrders.findViewById(R.id.food_list);
 
         String[] foods = new String[] {
-                "Davve",
-                "Dave"
+
         };
 
         // Create a List from String Array elements
@@ -66,10 +65,8 @@ public class MainActivity extends AppCompatActivity {
         test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fruits_list.add("David");
-
+                fruits_list.add("Lasagne");
                 arrayAdapter.notifyDataSetChanged();
-
             }
         });
 
