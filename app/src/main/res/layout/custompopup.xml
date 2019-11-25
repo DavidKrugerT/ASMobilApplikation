@@ -8,6 +8,7 @@
     android:paddingRight="5dp"
     android:paddingLeft="5dp"
     android:paddingTop="30dp"
+    android:paddingBottom="30dp"
     android:layout_gravity="center">
 
 
@@ -90,14 +91,15 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/food_btn1"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:text="@string/lasagn"
-                android:textStyle="bold"
-                android:id="@+id/test" />
+                android:textStyle="bold"/>
 
             <Button
+                android:id="@+id/food_btn2"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -105,6 +107,7 @@
                 android:textStyle="bold"
                 />
             <Button
+                android:id="@+id/food_btn3"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -112,6 +115,7 @@
                 android:textStyle="bold"
                 />
             <Button
+                android:id="@+id/food_btn4"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -119,6 +123,7 @@
                 android:textStyle="bold"
                 />
             <Button
+                android:id="@+id/food_btn5"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -129,7 +134,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.4"
+            android:layout_weight="0.3333"
             android:orientation="vertical">
 
             <TextView
@@ -143,10 +148,20 @@
                 android:layout_height="wrap_content"/>
 
             <ListView
+                android:layout_weight="1"
                 android:id="@+id/food_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="600dp"
                 android:background="@color/white"/>
+
+            <Button
+                android:id="@+id/sendOrder_btn"
+                android:onClick="ShowPopup"
+                android:background="@color/green"
+                android:text="@string/send_order"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"/>
+
         </LinearLayout>
     </LinearLayout>
 

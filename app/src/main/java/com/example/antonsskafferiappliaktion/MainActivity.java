@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     Dialog takeOrders;
-    Button test;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,30 +39,35 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void ShowPopup(View view) {
-        final Button test;
+        final Button food_btn1, food_btn2, food_btn3, food_btn4, food_btn5, food_btn6;
+
+
+
+        //this is
         TextView txtclose;
         takeOrders.setContentView(R.layout.custompopup);
         txtclose = takeOrders.findViewById(R.id.txtclose);
-        test = (Button) takeOrders.findViewById(R.id.test);
+        food_btn1 = (Button) takeOrders.findViewById(R.id.food_btn1);
+        food_btn2 = (Button) takeOrders.findViewById(R.id.food_btn2);
+        food_btn3 = (Button) takeOrders.findViewById(R.id.food_btn3);
+        food_btn4 = (Button) takeOrders.findViewById(R.id.food_btn4);
+        food_btn5 = (Button) takeOrders.findViewById(R.id.food_btn5);
 
         final ListView food_list;
 
         food_list = (ListView) takeOrders.findViewById(R.id.food_list);
 
-        String[] foods = new String[] {
-
-        };
+        String[] foods = new String[] {};
 
         // Create a List from String Array elements
         final List<String> fruits_list = new ArrayList<String>(Arrays.asList(foods));
 
         // Create an ArrayAdapter from List
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>
                 (this, android.R.layout.simple_list_item_1, fruits_list);
-
         food_list.setAdapter(arrayAdapter);
 
-        test.setOnClickListener(new View.OnClickListener() {
+        food_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fruits_list.add("Lasagne");
@@ -70,7 +75,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        food_btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fruits_list.add("Sallad");
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
 
+        food_btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fruits_list.add("Hamburgare");
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+        food_btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fruits_list.add("plankstek");
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+        food_btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fruits_list.add("lax med potatis");
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
 
         txtclose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +113,4 @@ public class MainActivity extends AppCompatActivity {
         });
         takeOrders.show();
     }
-
-
 }
