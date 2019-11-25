@@ -14,7 +14,6 @@
         android:id="@+id/popUp_btn1"
         android:layout_width="160dp"
         android:layout_height="73dp"
-        android:layout_marginBottom="496dp"
         android:onClick="ShowPopup"
         android:text="@string/table_1"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +21,7 @@
         app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.088" />
 
     <Button
         android:id="@+id/button2schedule"
@@ -45,8 +44,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popUp_btn1"
-        app:layout_constraintVertical_bias="0.301" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.424" />
 
     <Button
         android:id="@+id/popUp_btn3"
