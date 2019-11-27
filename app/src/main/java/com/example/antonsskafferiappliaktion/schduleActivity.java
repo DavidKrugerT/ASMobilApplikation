@@ -29,15 +29,11 @@ public class schduleActivity extends AppCompatActivity implements OnItemSelected
     CalendarView calendarView;
     TextView myDate;
 
-    String name;
-
     TextView sparadNamn;
     TextView sparadTid;
     TextView sparadDatum;
 
     Schedule schedule = new Schedule();
-
-    EditText nameInput;
 
     Button saveButton;
 
@@ -49,19 +45,17 @@ public class schduleActivity extends AppCompatActivity implements OnItemSelected
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schdule);
 
+        //Dropdown
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.names, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
-
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-
         spinner.setOnItemSelectedListener(this);
+        //Dropdown^
 
-
+        //Kalender
         calendarView = (CalendarView) findViewById(R.id.calendarView);
         myDate = (TextView) findViewById(R.id.myDate);
 
@@ -74,6 +68,7 @@ public class schduleActivity extends AppCompatActivity implements OnItemSelected
         lunch = (CheckBox) findViewById(R.id.lunch);
         kvell = (CheckBox) findViewById(R.id.kvell);
 
+        //CHECKBOXES
         lunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +82,7 @@ public class schduleActivity extends AppCompatActivity implements OnItemSelected
                 schedule.setTid("Kväll");
             }
         });
-
+        //NÄR MAN VÄLJER DATUM PÅ KALENDERN
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -96,7 +91,7 @@ public class schduleActivity extends AppCompatActivity implements OnItemSelected
                 schedule.setDatum(date);
             }
         });
-
+        //SPARA-KNAPPEN
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +104,7 @@ public class schduleActivity extends AppCompatActivity implements OnItemSelected
         });
 
     }
-
+    //API-koppling
     private class GetPerson extends AsyncTask<Void, Void, Void> {
         Person person;
         private String apiUrl = "";
