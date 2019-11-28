@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public class Order {
-    List<Dish> dishes = new ArrayList<>();
+    private List<Dish> dishes = new ArrayList<>();
     int bordsNummer;
 
     public List<Dish> getDishes() {
@@ -17,7 +17,6 @@ public class Order {
     public void setDishes(List<Dish> dish) {
         this.dishes = dish;
     }
-
 
     public int getBordsNummer() {
         return bordsNummer;
