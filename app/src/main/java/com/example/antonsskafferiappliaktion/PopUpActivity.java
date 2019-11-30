@@ -1,6 +1,8 @@
 package com.example.antonsskafferiappliaktion;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,21 +29,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PopUpActivity extends AppCompatActivity {
-    final Order order = new Order();
+    final Order order = MainActivity.order;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_activity);
 
+
+
         Button sendOrder_btn = findViewById(R.id.sendOrder_btn);
 
-
-
         final Button food_btn1 = findViewById(R.id.food_btn1);
+        food_btn1.setText(MainActivity.menu.getTheFoodsAtPos(0).getName());
         final Button food_btn2 = findViewById(R.id.food_btn2);
+        food_btn2.setText(MainActivity.menu.getTheFoodsAtPos(1).getName());
         final Button food_btn3 = findViewById(R.id.food_btn3);
+        food_btn3.setText(MainActivity.menu.getTheFoodsAtPos(2).getName());
         final Button food_btn4 = findViewById(R.id.food_btn4);
+        food_btn4.setText(MainActivity.menu.getTheFoodsAtPos(3).getName());
         final Button food_btn5 = findViewById(R.id.food_btn5);
+        food_btn5.setText(MainActivity.menu.getTheFoodsAtPos(4).getName());
 
         //Listan som skrivs ut
         final ListView food_list = findViewById(R.id.food_list);
@@ -57,8 +64,8 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setName("Lasange");
                 dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(0).getName());
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -68,8 +75,8 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setName("Sallad");
                 dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(1).getName());
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -79,8 +86,8 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setName("Hamburgare");
                 dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(2).getName());
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -89,8 +96,8 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setName("Planka");
                 dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(3).getName());
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -99,8 +106,8 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setName("Lax med potatis");
                 dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(4).getName());
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -114,9 +121,12 @@ public class PopUpActivity extends AppCompatActivity {
                 try {
                     postOrder = new PostOrder();
                     postOrder.execute();
+                    Intent intent = new Intent(PopUpActivity.this, MainActivity.class);
+                    startActivity(intent);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
+
             }
         });
         }
@@ -138,9 +148,10 @@ public class PopUpActivity extends AppCompatActivity {
                     jsonObject = new JSONObject();
                     jsonObject.put("name", dishes.get(i).getName());
                     jsonObject.put("price", 5000);
-                    jsonObject.put("orderNumber", 1);
-                    //jsonObject.put("name", );
-                    //jsonObject.put("name", dishes.get(i).getName());
+                    jsonObject.put("orderNumber", MainActivity.orderNumber);
+                    jsonObject.put("tableNumber", order.getBordsNummer());
+                    jsonObject.put("cookingTime", 50);
+
 
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     urlConnection.setRequestMethod("POST");
@@ -157,7 +168,7 @@ public class PopUpActivity extends AppCompatActivity {
                     //Log.d(this.getClass().toString(), jsonBody);
                     Log.d(this.getClass().toString(), "responsecode: " + urlConnection.getResponseCode());
                 }
-
+                MainActivity.orderNumber += 1;
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
