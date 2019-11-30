@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     //Dialog takeOrders;
-    public static Order order = new Order();
+    public static Order order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         popUp_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                order= new Order();
                 order.setBordsNummer(1);
                 Intent intent = new Intent(MainActivity.this, PopUpActivity.class);
                 startActivity(intent);
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         popUp_btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                order = new Order();
                 order.setBordsNummer(2);
                 Intent intent = new Intent(MainActivity.this, PopUpActivity.class);
                 startActivity(intent);
@@ -65,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         popUp_btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                order = new Order();
+
                 order.setBordsNummer(3);
                 Intent intent = new Intent(MainActivity.this, PopUpActivity.class);
                 startActivity(intent);
@@ -74,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
         popUp_btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                order = new Order();
+
                 order.setBordsNummer(4);
                 Intent intent = new Intent(MainActivity.this, PopUpActivity.class);
                 startActivity(intent);
@@ -83,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         popUp_btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                order = new Order();
                 order.setBordsNummer(5);
                 Intent intent = new Intent(MainActivity.this, PopUpActivity.class);
                 startActivity(intent);
@@ -92,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         popUp_btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                order = new Order();
+
                 order.setBordsNummer(6);
                 Intent intent = new Intent(MainActivity.this, PopUpActivity.class);
                 startActivity(intent);

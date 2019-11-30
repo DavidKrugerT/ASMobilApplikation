@@ -121,7 +121,7 @@ public class PopUpActivity extends AppCompatActivity {
         });
         }
     private class PostOrder extends AsyncTask<Void, Void, Void> {
-        URL url = new URL("http://10.250.124.26:8080/Project-WebApp/webresources/entity.dish/");
+        URL url = new URL("http://10.250.117.128:8080/Project-WebApp/webresources/entity.dish/");
         //URL url = new URL("https://google.com");
         JSONObject jsonObject;
         OutputStream out = null;
@@ -133,19 +133,14 @@ public class PopUpActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                /*jsonBody =
-                        "{"
-                                +"\"name\":"+"\""+dishes[0].getName()+"\","
-                                +"\"price\""+":"+dishes[0].getPrice()+
-                                "}";*/
+
                 for(int i = 0; i < dishes.size(); i++) {
                     jsonObject = new JSONObject();
                     jsonObject.put("name", dishes.get(i).getName());
-                    jsonObject.put("price", dishes.get(i).getPrice());
-                    jsonObject.put("orderNumber", dishes.get(i).getName());
-                    jsonObject.put("name", dishes.get(i).getName());
-                    jsonObject.put("name", dishes.get(i).getName());
-
+                    jsonObject.put("price", 5000);
+                    jsonObject.put("orderNumber", 1);
+                    //jsonObject.put("name", );
+                    //jsonObject.put("name", dishes.get(i).getName());
 
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     urlConnection.setRequestMethod("POST");
