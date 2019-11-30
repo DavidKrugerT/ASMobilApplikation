@@ -3,8 +3,46 @@ package com.example.antonsskafferiappliaktion;
 import androidx.annotation.NonNull;
 
 public class Dish {
-    String name;
-    String price;
+    private String name;
+    private double price;
+    private int orderNumber;
+    private int tableNumber;
+    private int dishid;
+    private int cookingTime;
+
+    public int getCookingTime() {
+        return cookingTime;
+    }
+
+    public void setCookingTime(int cookingTime) {
+        this.cookingTime = cookingTime;
+    }
+
+
+    public int getDishid() {
+        return dishid;
+    }
+
+    public void setDishid(int dishid) {
+        this.dishid = dishid;
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+
+    public int getTableNumber() {
+        return tableNumber;
+    }
+
+    public void setTableNumber(int tableNumber) {
+        this.tableNumber = tableNumber;
+    }
 
     public String getName() {
         return name;
@@ -15,11 +53,11 @@ public class Dish {
     }
 
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
