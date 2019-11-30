@@ -1,7 +1,6 @@
 package com.example.antonsskafferiappliaktion;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -21,9 +23,11 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PopUpActivity extends AppCompatActivity {
-
+    final Order order = new Order();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +51,7 @@ public class PopUpActivity extends AppCompatActivity {
         //Listan som skrivs ut
         final ListView food_list = findViewById(R.id.food_list);
         //final Dish dish = new Dish();
-        final Order order = new Order();
+
 
         //Create an ArrayAdapter from List
         final ArrayAdapter<Dish> arrayAdapter = new ArrayAdapter<>
@@ -58,8 +62,8 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
+                dish.setPrice(5000);
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(0).getName());
-                dish.setPrice("5000");
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -69,8 +73,8 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
+                dish.setPrice(5000);
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(1).getName());
-                dish.setPrice("4000");
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -80,8 +84,8 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
+                dish.setPrice(5000);
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(2).getName());
-                dish.setPrice("6000");
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -90,8 +94,8 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
+                dish.setPrice(5000);
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(3).getName());
-                dish.setPrice("5000");
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -100,8 +104,8 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
+                dish.setPrice(5000);
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(4).getName());
-                dish.setPrice("5000");
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -114,84 +118,66 @@ public class PopUpActivity extends AppCompatActivity {
                 PostOrder postOrder = null;
                 try {
                     postOrder = new PostOrder();
-                    postOrder.execute(order.getDishes().get(0));
+                    postOrder.execute();
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
             }
         });
         }
-    private class PostOrder extends AsyncTask<Dish, String, String> {
-        URL url = new URL("http://10.250.119.122:8080/Project-WebApp/webresources/entity.dish/");
+    private class PostOrder extends AsyncTask<Void, Void, Void> {
+        URL url = new URL("http://10.250.124.26:8080/Project-WebApp/webresources/entity.dish/");
+        //URL url = new URL("https://google.com");
+        JSONObject jsonObject;
         OutputStream out = null;
-        String jsonBody;
+        List<Dish> dishes = new ArrayList<>();
         private PostOrder() throws MalformedURLException {
+            dishes = order.getDishes();
         }
 
         @Override
-        protected String doInBackground(Dish... dishes) {
+        protected Void doInBackground(Void... voids) {
             try {
-                jsonBody =
+                /*jsonBody =
                         "{"
                                 +"\"name\":"+"\""+dishes[0].getName()+"\","
                                 +"\"price\""+":"+dishes[0].getPrice()+
-                                "}";
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("POST");
-                urlConnection.setRequestProperty("Content-Type", "application/json");
-
-                out = new BufferedOutputStream(urlConnection.getOutputStream());
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-                writer.write(jsonBody);
-                writer.flush();
-                writer.close();
-                out.close();
-
-                urlConnection.connect();
-                Log.d(this.getClass().toString(),jsonBody);
-                Log.d(this.getClass().toString(),"responsecode: "+urlConnection.getResponseCode());
+                                "}";*/
+                for(int i = 0; i < dishes.size(); i++) {
+                    jsonObject = new JSONObject();
+                    jsonObject.put("name", dishes.get(i).getName());
+                    jsonObject.put("price", dishes.get(i).getPrice());
+                    jsonObject.put("orderNumber", dishes.get(i).getName());
+                    jsonObject.put("name", dishes.get(i).getName());
+                    jsonObject.put("name", dishes.get(i).getName());
 
 
-                /*HttpURLConnection conn;
-                do {
-                    conn = (HttpURLConnection) url.openConnection();
-                }while(conn.getResponseCode() != 200);
-                conn.setRequestMethod("POST");
-                //conn.setRequestProperty("Content-Type", "application/json; utf-8");
-                //conn.setRequestProperty("Accept", "application/json");
-                //conn.setReadTimeout(10000);
-                //conn.setConnectTimeout(15000);
-                conn.setDoOutput(true);
-                //conn.setDoInput(true);
-                jsonBody =
-                        "{"
-                        +"name:"+dishes[0].getName()+","
-                        +"price:"+dishes[0].getPrice()+
-                        "}";
-                OutputStream os = conn.getOutputStream();
-                byte[] input = jsonBody.getBytes("utf-8");
-                os.write(input,0,input.length);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("POST");
+                    urlConnection.setRequestProperty("Content-Type", "application/json");
 
-                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
-                    StringBuilder response = new StringBuilder();
-                    String responseline = null;
-                    while((responseline = br.readLine())!=null)
-                    {
-                        response.append(responseline).append("\n");
-                    }
-                    br.close();
-                    conn.disconnect();*/
+                    out = new BufferedOutputStream(urlConnection.getOutputStream());
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
+                    writer.write(jsonObject.toString());
+                    writer.flush();
+                    writer.close();
+                    out.close();
+
+                    urlConnection.connect();
+                    //Log.d(this.getClass().toString(), jsonBody);
+                    Log.d(this.getClass().toString(), "responsecode: " + urlConnection.getResponseCode());
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+
             return null;
         }
 
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-        }
+
     }
 
 }

@@ -29,6 +29,4 @@ public class Order {
     public void addDish(Dish dish) {
         dishes.add(dish);
     }
-
-
 }
