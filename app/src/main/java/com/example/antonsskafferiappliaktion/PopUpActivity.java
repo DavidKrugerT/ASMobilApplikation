@@ -29,15 +29,20 @@ public class PopUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_activity);
 
+
+
         Button sendOrder_btn = findViewById(R.id.sendOrder_btn);
 
-
-
         final Button food_btn1 = findViewById(R.id.food_btn1);
+        food_btn1.setText(MainActivity.menu.getTheFoodsAtPos(0).getName());
         final Button food_btn2 = findViewById(R.id.food_btn2);
+        food_btn2.setText(MainActivity.menu.getTheFoodsAtPos(1).getName());
         final Button food_btn3 = findViewById(R.id.food_btn3);
+        food_btn3.setText(MainActivity.menu.getTheFoodsAtPos(2).getName());
         final Button food_btn4 = findViewById(R.id.food_btn4);
+        food_btn4.setText(MainActivity.menu.getTheFoodsAtPos(3).getName());
         final Button food_btn5 = findViewById(R.id.food_btn5);
+        food_btn5.setText(MainActivity.menu.getTheFoodsAtPos(4).getName());
 
         //Listan som skrivs ut
         final ListView food_list = findViewById(R.id.food_list);
@@ -53,7 +58,7 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setName("Lasange");
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(0).getName());
                 dish.setPrice("5000");
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
@@ -64,7 +69,7 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setName("Sallad");
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(1).getName());
                 dish.setPrice("4000");
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
@@ -75,7 +80,7 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setName("Hamburgare");
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(2).getName());
                 dish.setPrice("6000");
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
@@ -85,7 +90,7 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setName("Planka");
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(3).getName());
                 dish.setPrice("5000");
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
@@ -95,7 +100,7 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setName("Lax med potatis");
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(4).getName());
                 dish.setPrice("5000");
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
@@ -118,7 +123,6 @@ public class PopUpActivity extends AppCompatActivity {
         }
     private class PostOrder extends AsyncTask<Dish, String, String> {
         URL url = new URL("http://10.250.119.122:8080/Project-WebApp/webresources/entity.dish/");
-        //URL url = new URL("https://google.com");
         OutputStream out = null;
         String jsonBody;
         private PostOrder() throws MalformedURLException {
@@ -146,6 +150,8 @@ public class PopUpActivity extends AppCompatActivity {
                 urlConnection.connect();
                 Log.d(this.getClass().toString(),jsonBody);
                 Log.d(this.getClass().toString(),"responsecode: "+urlConnection.getResponseCode());
+
+
                 /*HttpURLConnection conn;
                 do {
                     conn = (HttpURLConnection) url.openConnection();

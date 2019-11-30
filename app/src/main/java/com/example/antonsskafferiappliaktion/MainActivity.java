@@ -15,12 +15,14 @@ public class MainActivity extends AppCompatActivity {
 
     //Dialog takeOrders;
     public static Order order = new Order();
+    public static Menu menu = new Menu();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //takeOrders = new Dialog(this);
+
+        //final Menu menu = new Menu();
 
         //KNAPP TILL schduleActivity
         //-----------------------------------------------
