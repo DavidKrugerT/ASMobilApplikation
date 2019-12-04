@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,8 +35,6 @@ public class PopUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_activity);
-
-
 
         Button sendOrder_btn = findViewById(R.id.sendOrder_btn);
 
@@ -117,13 +116,17 @@ public class PopUpActivity extends AppCompatActivity {
         sendOrder_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PostOrder postOrder = null;
+               PostOrder postOrder = null;
                 try {
                     postOrder = new PostOrder();
                     postOrder.execute();
+                    //Toast.makeText(MainActivity.this, "HEJHEJHEJHeJHEJHEJHEJEHJEHJEHJEHEJEH", Toast.LENGTH_LONG).show();
+
                     Intent intent = new Intent(PopUpActivity.this, MainActivity.class);
                     startActivity(intent);
-                } catch (MalformedURLException e) {
+
+                }
+                catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -131,7 +134,7 @@ public class PopUpActivity extends AppCompatActivity {
         });
         }
     private class PostOrder extends AsyncTask<Void, Void, Void> {
-        URL url = new URL("http://10.250.117.128:8080/Project-WebApp/webresources/entity.dish/");
+        URL url = new URL("http://10.250.124.34:8080/Project-WebApp/webresources/entity.dish/");
         //URL url = new URL("https://google.com");
         JSONObject jsonObject;
         OutputStream out = null;
@@ -151,7 +154,7 @@ public class PopUpActivity extends AppCompatActivity {
                     jsonObject.put("orderNumber", MainActivity.orderNumber);
                     jsonObject.put("tableNumber", order.getBordsNummer());
                     jsonObject.put("cookingTime", 50);
-
+                    jsonObject.put("done", true);
 
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     urlConnection.setRequestMethod("POST");
