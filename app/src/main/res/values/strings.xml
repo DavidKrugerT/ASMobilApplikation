@@ -26,6 +26,7 @@
     <string name="Förrätt" />
     <string name="Efterrätt" />
     <string name="send_order">SEND ORDER</string>
+    <string name="Lunch" />
 
     <string-array name="names">
         <item>Jonathan</item>
