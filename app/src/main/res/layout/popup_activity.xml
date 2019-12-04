@@ -19,26 +19,18 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             >
-            <Button
-                android:background="@color/blue"
-                android:textStyle="bold"
-                android:text="LUNCH"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
-                />
-            <Button
-                android:background="@color/blue"
-                android:textStyle="bold"
-                android:text="AL A CARTÉ"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:height="100dp"
+                android:fontFamily="cursive"
+                android:gravity="center"
+                android:text="Menu"
+                android:textColor="@color/white"
+                android:textSize="65sp"
+                android:textStyle="bold"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -55,48 +47,154 @@
         <LinearLayout
             android:id="@+id/varmratt_alt"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <Button
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                android:id="@+id/food_btn1"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lunch"
+                    android:textColor="@color/white"
+                    android:textSize="45sp"
+                    android:gravity="center"
+                    android:fontFamily="cursive"></TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                   >
 
-            <Button
-                android:id="@+id/food_btn2"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
+                    <Button
+                        android:id="@+id/food_btn1"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_weight="0.2">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/food_btn2"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_weight="0.2">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/food_btn3"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_weight="0.2">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/food_btn4"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_weight="0.2">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/food_btn5"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_weight="0.2">
+
+                    </Button>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                />
-            <Button
-                android:id="@+id/food_btn3"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                />
-            <Button
-                android:id="@+id/food_btn4"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                />
-            <Button
-                android:id="@+id/food_btn5"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="A La Carte"
+                    android:textColor="@color/white"
+                    android:textSize="45sp"
+                    android:gravity="center"
+                    android:fontFamily="cursive"></TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <Button
+                        android:id="@+id/food_btn6"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_weight="0.2">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/food_btn7"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_weight="0.2">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/food_btn8"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_weight="0.2">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/food_btn9"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_weight="0.2">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/food_btn10"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:layout_weight="0.2">
+
+                    </Button>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
         </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -104,30 +202,32 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:height="100dp"
-                android:text="Orders"
-                android:fontFamily="cursive"
+                android:layout_width="319dp"
+                android:layout_height="75dp"
                 android:layout_gravity="center"
+                android:height="100dp"
+                android:fontFamily="cursive"
+                android:gravity="center"
+                android:text="Orders"
                 android:textColor="@color/white"
-                android:textSize="50sp"
-                android:layout_height="wrap_content"/>
+                android:textSize="46sp" />
 
             <ListView
-                android:layout_weight="1"
                 android:id="@+id/food_list"
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
-                android:background="@color/white"/>
+                android:layout_weight="1"
+                android:background="@color/white" />
 
             <Button
                 android:id="@+id/sendOrder_btn"
-                android:background="@color/green"
-                android:text="@string/send_order"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"
+                android:background="@color/green"
+                android:text="@string/send_order" />
 
         </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

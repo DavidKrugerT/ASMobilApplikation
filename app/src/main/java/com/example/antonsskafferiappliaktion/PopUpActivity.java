@@ -49,6 +49,18 @@ public class PopUpActivity extends AppCompatActivity {
         food_btn4.setText(MainActivity.menu.getTheFoodsAtPos(3).getName());
         final Button food_btn5 = findViewById(R.id.food_btn5);
         food_btn5.setText(MainActivity.menu.getTheFoodsAtPos(4).getName());
+        final Button food_btn6 = findViewById(R.id.food_btn6);
+        food_btn6.setText(MainActivity.menu.getTheFoodsAtPos(5).getName());
+        final Button food_btn7 = findViewById(R.id.food_btn7);
+        food_btn7.setText(MainActivity.menu.getTheFoodsAtPos(6).getName());
+        final Button food_btn8 = findViewById(R.id.food_btn8);
+        food_btn8.setText(MainActivity.menu.getTheFoodsAtPos(7).getName());
+        final Button food_btn9 = findViewById(R.id.food_btn9);
+        food_btn9.setText(MainActivity.menu.getTheFoodsAtPos(8).getName());
+        final Button food_btn10 = findViewById(R.id.food_btn10);
+        food_btn10.setText(MainActivity.menu.getTheFoodsAtPos(9).getName());
+
+
 
         //Listan som skrivs ut
         final ListView food_list = findViewById(R.id.food_list);
@@ -108,6 +120,56 @@ public class PopUpActivity extends AppCompatActivity {
                 Dish dish = new Dish();
                 dish.setPrice(5000);
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(4).getName());
+                order.addDish(dish);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+        food_btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dish dish = new Dish();
+                dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(5).getName());
+                order.addDish(dish);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+        food_btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dish dish = new Dish();
+                dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(6).getName());
+                order.addDish(dish);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+        food_btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dish dish = new Dish();
+                dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(7).getName());
+                order.addDish(dish);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+        food_btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dish dish = new Dish();
+                dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(8).getName());
+                order.addDish(dish);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+        food_btn10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dish dish = new Dish();
+                dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(9).getName());
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
