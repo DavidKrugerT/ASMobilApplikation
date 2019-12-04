@@ -1,7 +1,6 @@
 package com.example.antonsskafferiappliaktion;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,10 +11,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -23,11 +25,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 public class PopUpActivity extends AppCompatActivity {
     final Order order = MainActivity.order;
@@ -48,6 +54,16 @@ public class PopUpActivity extends AppCompatActivity {
         food_btn4.setText(MainActivity.menu.getTheFoodsAtPos(3).getName());
         final Button food_btn5 = findViewById(R.id.food_btn5);
         food_btn5.setText(MainActivity.menu.getTheFoodsAtPos(4).getName());
+        final Button food_btn6 = findViewById(R.id.food_btn6);
+        food_btn6.setText(MainActivity.menu.getTheFoodsAtPos(5).getName());
+        final Button food_btn7 = findViewById(R.id.food_btn7);
+        food_btn7.setText(MainActivity.menu.getTheFoodsAtPos(6).getName());
+        final Button food_btn8 = findViewById(R.id.food_btn8);
+        food_btn8.setText(MainActivity.menu.getTheFoodsAtPos(7).getName());
+        final Button food_btn9 = findViewById(R.id.food_btn9);
+        food_btn9.setText(MainActivity.menu.getTheFoodsAtPos(8).getName());
+        final Button food_btn10 = findViewById(R.id.food_btn10);
+        food_btn10.setText(MainActivity.menu.getTheFoodsAtPos(9).getName());
 
         //Listan som skrivs ut
         final ListView food_list = findViewById(R.id.food_list);
@@ -62,6 +78,8 @@ public class PopUpActivity extends AppCompatActivity {
         food_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                HttpGetRequest httpGetRequest = new HttpGetRequest();
+                httpGetRequest.execute();
                 Dish dish = new Dish();
                 dish.setPrice(5000);
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(0).getName());
@@ -104,6 +122,8 @@ public class PopUpActivity extends AppCompatActivity {
         food_btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(PopUpActivity.this, MainActivity.class);
+                startActivity(intent);
                 Dish dish = new Dish();
                 dish.setPrice(5000);
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(4).getName());
@@ -111,7 +131,56 @@ public class PopUpActivity extends AppCompatActivity {
                 arrayAdapter.notifyDataSetChanged();
             }
         });
-
+        food_btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dish dish = new Dish();
+                dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(5).getName());
+                order.addDish(dish);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+        food_btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dish dish = new Dish();
+                dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(6).getName());
+                order.addDish(dish);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+        food_btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dish dish = new Dish();
+                dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(7).getName());
+                order.addDish(dish);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+        food_btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dish dish = new Dish();
+                dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(8).getName());
+                order.addDish(dish);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+        food_btn10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dish dish = new Dish();
+                dish.setPrice(5000);
+                dish.setName(MainActivity.menu.getTheFoodsAtPos(9).getName());
+                order.addDish(dish);
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
 
         sendOrder_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,8 +189,6 @@ public class PopUpActivity extends AppCompatActivity {
                 try {
                     postOrder = new PostOrder();
                     postOrder.execute();
-                    //Toast.makeText(MainActivity.this, "HEJHEJHEJHeJHEJHEJHEJEHJEHJEHJEHEJEH", Toast.LENGTH_LONG).show();
-
                     Intent intent = new Intent(PopUpActivity.this, MainActivity.class);
                     startActivity(intent);
 
@@ -129,7 +196,6 @@ public class PopUpActivity extends AppCompatActivity {
                 catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
         });
         }
@@ -146,7 +212,6 @@ public class PopUpActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-
                 for(int i = 0; i < dishes.size(); i++) {
                     jsonObject = new JSONObject();
                     jsonObject.put("name", dishes.get(i).getName());
@@ -177,11 +242,83 @@ public class PopUpActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            return null;
+        }
+    }
 
+    public static class HttpGetRequest extends AsyncTask<Void, Void, Void> {
+        //Some url endpoint that you may have
+        private String apiUrl = "http://10.250.117.145:8080/Project-WebApp/webresources/entity.menu";
+        private String strXml;
+
+        //String to place our result in
+        //String result;
+        //Instantiate new instance of our class
+        //HttpGetRequest getRequest = new HttpGetRequest();
+        //Perform the doInBackground method, passing in our url
+        //result = getRequest.execute(myUrl).get();
+        protected Void doInBackground(Void... voids) {
+
+            try {
+                URL url = new URL(apiUrl);
+                HttpURLConnection conn;
+                do {
+
+                    conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestProperty("Accept", "application/json");
+                } while (conn.getResponseCode() != 200);
+
+                conn.setRequestMethod("GET");
+
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+                    strXml = stringBuilder.toString();
+
+                    System.out.println("Root elementhhhhhhhhhhhhhh :" + strXml);
+
+                    //setData(strXml);
+                } finally {
+                    conn.disconnect();
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
             return null;
         }
 
+        @Override
+        protected void onPostExecute(Void result){
+            super.onPostExecute(result);
+        }
 
+        private String setData(String str){
+            try{
+                //String test = new String();
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builder = factory.newDocumentBuilder();
+                Document doc = builder.parse(new InputSource(new StringReader(str)));
+                doc.getDocumentElement().normalize();
+                NodeList nodeList = doc.getElementsByTagName("menu");
+
+                for (int temp = 0; temp < nodeList.getLength(); temp++){
+                    Node node = nodeList.item(temp);
+                    Menu menu = new Menu();
+                    if(node.getNodeType() == Node.ELEMENT_NODE){
+                        org.w3c.dom.Element element = (Element)node;
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
     }
 
 }
