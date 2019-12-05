@@ -39,41 +39,14 @@ public class Menu {
     }
 
     public Menu() {
-        final Dish dish1 = new Dish();
-        final Dish dish2 = new Dish();
-        final Dish dish3 = new Dish();
-        final Dish dish4 = new Dish();
-        final Dish dish5 = new Dish();
-        Dish dish6 = new Dish();
-        Dish dish7 = new Dish();
-        Dish dish8 = new Dish();
-        Dish dish9 = new Dish();
-        Dish dish10 = new Dish();
-
 
         HttpGetRequest httpGetRequest = new HttpGetRequest();
         httpGetRequest.execute();
 
-        dish6.setName("david");
-        dish7.setName("david");
-        dish8.setName("david");
-        dish9.setName("david");
-        dish10.setName("david");
-
-        addFood(dish1);
-        addFood(dish2);
-        addFood(dish3);
-        addFood(dish4);
-        addFood(dish5);
-        addFood(dish6);
-        addFood(dish7);
-        addFood(dish8);
-        addFood(dish9);
-        addFood(dish10);
     }
    class HttpGetRequest extends AsyncTask<Void, Void, Void> {
         //Some url endpoint that you may have
-        private String apiUrl = "http://10.250.117.130:8080/Project-WebApp/webresources/entity.menu";
+        private String apiUrl = "http://10.250.124.20:8080/Project-WebApp/webresources/entity.menu";
         private String strXml;
 
 
@@ -109,7 +82,7 @@ public class Menu {
                     strXml = stringBuilder.toString();
                     dishes = parser(strXml);
 
-                    System.out.println("Root elementhhhhhhhhhhhhhh :" + dishes);
+                   // System.out.println("Root elementhhhhhhhhhhhhhh :" + dishes);
 
                 } finally {
                     conn.disconnect();
@@ -143,7 +116,7 @@ public class Menu {
 
                 tmpDish.setName(jObject.getString("name"));
                 tmpDish.setPrice(jObject.getDouble("price"));
-                tmpDish.setCookingTime(50);
+                tmpDish.setCookingTime(jObject.getInt("cookingTime"));
                 tmpDishes.add(tmpDish);
 
             }

@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
     //Dialog tableStatus;
     public static Order order;
     public static Menu menu;
-    public static int orderNumber;
+    public static Integer orderNumber = 0;
     public static List<Integer> finishedOrders = new ArrayList<>();
     public static Button popTableButton;
     private Timer timer = new Timer();
-    private List<Integer> tableOrderReady = new ArrayList<>();
+    public static List<Integer> tableOrderReady = new ArrayList<>();
     ListView listOrderReadyV;
     ArrayAdapter arrayAdapter;
 
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         arrayAdapter = new ArrayAdapter(MainActivity.this,android.R.layout.simple_list_item_1,tableOrderReady);
 
-        orderNumber = 0;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //tableStatus = new Dialog(this);
@@ -81,10 +81,15 @@ public class MainActivity extends AppCompatActivity {
         listOrderReadyV = findViewById(R.id.listOrderReadyView);
         Button popTableButton = findViewById(R.id.popDeliveredTableButton);
 
+        listOrderReadyV.setAdapter(arrayAdapter);
+
         popTableButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tableOrderReady.remove(0);
+                if (!tableOrderReady.isEmpty()){
+                    tableOrderReady.remove(0);
+                }
+
                 arrayAdapter.notifyDataSetChanged();
             }
         });
@@ -159,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         class CheckForFinishedDishes extends AsyncTask<Void, Void, Void> {
-            URL url = new URL("http://10.250.117.130:8080/Project-WebApp/webresources/entity.dish/");
+            URL url = new URL("http://10.250.124.20:8080/Project-WebApp/webresources/entity.dish/");
             InputStream in = null;
             String tables="";
             CheckForFinishedDishes() throws MalformedURLException {
@@ -192,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Toast toast = Toast.makeText(MainActivity.this, "Food is ready for tables:"+tables, Toast.LENGTH_LONG);
                 toast.show();
-                listOrderReadyV.setAdapter(arrayAdapter);
+
                 arrayAdapter.notifyDataSetChanged();
                 super.onPostExecute(aVoid);
             }

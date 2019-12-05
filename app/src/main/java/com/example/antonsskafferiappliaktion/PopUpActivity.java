@@ -81,7 +81,7 @@ public class PopUpActivity extends AppCompatActivity {
                 //HttpGetRequest httpGetRequest = new HttpGetRequest();
                 //httpGetRequest.execute();
                 Dish dish = new Dish();
-                dish.setPrice(5000);
+                dish.setPrice(MainActivity.menu.getTheFoodsAtPos(0).getPrice());
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(0).getName());
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
@@ -92,8 +92,9 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setPrice(5000);
+                dish.setPrice(MainActivity.menu.getTheFoodsAtPos(1).getPrice());
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(1).getName());
+                dish.setCookingTime(MainActivity.menu.getTheFoodsAtPos(1).getCookingTime());
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -103,8 +104,10 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setPrice(5000);
+                dish.setPrice(MainActivity.menu.getTheFoodsAtPos(2).getPrice());
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(2).getName());
+                dish.setCookingTime(MainActivity.menu.getTheFoodsAtPos(2).getCookingTime());
+
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -113,8 +116,10 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setPrice(5000);
+                dish.setPrice(MainActivity.menu.getTheFoodsAtPos(3).getPrice());
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(3).getName());
+                dish.setCookingTime(MainActivity.menu.getTheFoodsAtPos(3).getCookingTime());
+
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -124,8 +129,10 @@ public class PopUpActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Dish dish = new Dish();
-                dish.setPrice(5000);
+                dish.setPrice(MainActivity.menu.getTheFoodsAtPos(4).getPrice());
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(4).getName());
+                dish.setCookingTime(MainActivity.menu.getTheFoodsAtPos(4).getCookingTime());
+
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -134,8 +141,10 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setPrice(5000);
+                dish.setPrice(MainActivity.menu.getTheFoodsAtPos(5).getPrice());
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(5).getName());
+                dish.setCookingTime(MainActivity.menu.getTheFoodsAtPos(5).getCookingTime());
+
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -144,8 +153,10 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setPrice(5000);
+                dish.setPrice(MainActivity.menu.getTheFoodsAtPos(6).getPrice());
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(6).getName());
+                dish.setCookingTime(MainActivity.menu.getTheFoodsAtPos(6).getCookingTime());
+
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -154,8 +165,10 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setPrice(5000);
+                dish.setPrice(MainActivity.menu.getTheFoodsAtPos(7).getPrice());
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(7).getName());
+                dish.setCookingTime(MainActivity.menu.getTheFoodsAtPos(7).getCookingTime());
+
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -164,8 +177,10 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setPrice(5000);
+                dish.setPrice(MainActivity.menu.getTheFoodsAtPos(8).getPrice());
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(8).getName());
+                dish.setCookingTime(MainActivity.menu.getTheFoodsAtPos(8).getCookingTime());
+
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -174,8 +189,10 @@ public class PopUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Dish dish = new Dish();
-                dish.setPrice(5000);
+                dish.setPrice(MainActivity.menu.getTheFoodsAtPos(9).getPrice());
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(9).getName());
+                dish.setCookingTime(MainActivity.menu.getTheFoodsAtPos(9).getCookingTime());
+
                 order.addDish(dish);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -217,14 +234,14 @@ public class PopUpActivity extends AppCompatActivity {
             try {
                 for(int i = 0; i < dishes.size(); i++) {
 
-                    URL url = new URL("http://10.250.117.130:8080/Project-WebApp/webresources/entity.dish/");
+                    URL url = new URL("http://10.250.124.20:8080/Project-WebApp/webresources/entity.dish/");
                     jsonObject = new JSONObject();
                     jsonObject.put("name", dishes.get(i).getName());
-                    jsonObject.put("price", 5000);
+                    jsonObject.put("price", dishes.get(i).getPrice());
                     jsonObject.put("orderNumber", MainActivity.orderNumber);
                     jsonObject.put("tableNumber", order.getBordsNummer());
-                    jsonObject.put("cookingTime", 50);
-                    jsonObject.put("done", true);
+                    jsonObject.put("cookingTime", dishes.get(i).getCookingTime());
+                    jsonObject.put("done", false);
 
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     urlConnection.setRequestMethod("POST");
@@ -241,13 +258,21 @@ public class PopUpActivity extends AppCompatActivity {
                     //Log.d(this.getClass().toString(), jsonBody);
                     //Log.d(this.getClass().toString(), "responsecode: " + urlConnection.getResponseCode());
                 }
-                MainActivity.orderNumber += 1;
+
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            int order = MainActivity.orderNumber;
+            MainActivity.orderNumber = order + 1;
+            System.out.println(MainActivity.orderNumber);
+            super.onPostExecute(aVoid);
         }
     }
 
