@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         MyTimerTask timerTask = new MyTimerTask();
-        timer.schedule(timerTask, 2000, 30000);
+        timer.schedule(timerTask, 2000, 3000);
 
         arrayAdapter = new ArrayAdapter(MainActivity.this,android.R.layout.simple_list_item_1,tableOrderReady);
 
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         class CheckForFinishedDishes extends AsyncTask<Void, Void, Void> {
-            URL url = new URL("http://10.250.124.34:8080/Project-WebApp/webresources/entity.dish/");
+            URL url = new URL("http://10.250.119.132:8080/Project-WebApp/webresources/entity.dish/");
             InputStream in = null;
             String tables="";
             CheckForFinishedDishes() throws MalformedURLException {

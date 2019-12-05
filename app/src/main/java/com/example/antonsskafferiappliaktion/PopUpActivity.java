@@ -200,7 +200,7 @@ public class PopUpActivity extends AppCompatActivity {
         });
         }
     private class PostOrder extends AsyncTask<Void, Void, Void> {
-        URL url = new URL("http://10.250.124.34:8080/Project-WebApp/webresources/entity.dish/");
+        URL url = new URL("http://10.250.119.132:8080/Project-WebApp/webresources/entity.dish/");
         //URL url = new URL("https://google.com");
         JSONObject jsonObject;
         OutputStream out = null;
@@ -224,7 +224,7 @@ public class PopUpActivity extends AppCompatActivity {
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     urlConnection.setRequestMethod("POST");
                     urlConnection.setRequestProperty("Content-Type", "application/json");
-
+                    System.out.println(urlConnection.getResponseCode());
                     out = new BufferedOutputStream(urlConnection.getOutputStream());
                     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
                     writer.write(jsonObject.toString());
