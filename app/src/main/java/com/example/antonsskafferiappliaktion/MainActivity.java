@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         orderNumber = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Menu menu = new Menu();
 
         //final Menu menu = new Menu();
 
