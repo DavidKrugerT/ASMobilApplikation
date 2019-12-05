@@ -1,7 +1,6 @@
 package com.example.antonsskafferiappliaktion;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,7 +9,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
+import android.widget.TextView;
+import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
@@ -18,7 +18,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
-
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -43,10 +42,6 @@ public class PopUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_activity);
 
-        Menu menu = new Menu();
-
-
-
         Button sendOrder_btn = findViewById(R.id.sendOrder_btn);
 
         final Button food_btn1 = findViewById(R.id.food_btn1);
@@ -69,8 +64,6 @@ public class PopUpActivity extends AppCompatActivity {
         food_btn9.setText(MainActivity.menu.getTheFoodsAtPos(8).getName());
         final Button food_btn10 = findViewById(R.id.food_btn10);
         food_btn10.setText(MainActivity.menu.getTheFoodsAtPos(9).getName());
-
-
 
         //Listan som skrivs ut
         final ListView food_list = findViewById(R.id.food_list);
@@ -129,6 +122,7 @@ public class PopUpActivity extends AppCompatActivity {
         food_btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Dish dish = new Dish();
                 dish.setPrice(5000);
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(4).getName());
@@ -191,21 +185,24 @@ public class PopUpActivity extends AppCompatActivity {
         sendOrder_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PostOrder postOrder = null;
+               //PostOrder postOrder = null;
                 try {
-                    postOrder = new PostOrder();
+                    PostOrder postOrder = new PostOrder();
                     postOrder.execute();
                     Intent intent = new Intent(PopUpActivity.this, MainActivity.class);
                     startActivity(intent);
-                } catch (MalformedURLException e) {
+
+                }
+                catch (Exception e) {
                     e.printStackTrace();
                 }
 
             }
         });
         }
+
     private class PostOrder extends AsyncTask<Void, Void, Void> {
-        URL url = new URL("http://10.250.117.130:8080/Project-WebApp/webresources/entity.dish/");
+
         //URL url = new URL("https://google.com");
         JSONObject jsonObject;
         OutputStream out = null;
@@ -216,9 +213,11 @@ public class PopUpActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
+            //System.out.println("\n\n\n\n\n\n\n"+dishes.size());
             try {
-
                 for(int i = 0; i < dishes.size(); i++) {
+
+                    URL url = new URL("http://10.250.117.130:8080/Project-WebApp/webresources/entity.dish/");
                     jsonObject = new JSONObject();
                     jsonObject.put("name", dishes.get(i).getName());
                     jsonObject.put("price", 5000);
@@ -230,17 +229,17 @@ public class PopUpActivity extends AppCompatActivity {
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     urlConnection.setRequestMethod("POST");
                     urlConnection.setRequestProperty("Content-Type", "application/json");
-
+                    //
                     out = new BufferedOutputStream(urlConnection.getOutputStream());
                     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
                     writer.write(jsonObject.toString());
                     writer.flush();
                     writer.close();
                     out.close();
-
-                    urlConnection.connect();
+                    System.out.println("***********------------***********"+urlConnection.getResponseCode());
+                   // urlConnection.connect();
                     //Log.d(this.getClass().toString(), jsonBody);
-                    Log.d(this.getClass().toString(), "responsecode: " + urlConnection.getResponseCode());
+                    //Log.d(this.getClass().toString(), "responsecode: " + urlConnection.getResponseCode());
                 }
                 MainActivity.orderNumber += 1;
             } catch (IOException e) {
@@ -248,11 +247,8 @@ public class PopUpActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
             return null;
         }
-
-
     }
 
 }
