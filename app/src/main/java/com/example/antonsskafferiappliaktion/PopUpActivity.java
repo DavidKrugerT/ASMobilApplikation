@@ -122,8 +122,7 @@ public class PopUpActivity extends AppCompatActivity {
         food_btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PopUpActivity.this, MainActivity.class);
-                startActivity(intent);
+
                 Dish dish = new Dish();
                 dish.setPrice(5000);
                 dish.setName(MainActivity.menu.getTheFoodsAtPos(4).getName());
